@@ -1,36 +1,48 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <div>
-      <p>
-        If Element is successfully added to this project, you'll see an
-        <code v-text="'<el-button>'"></code>
-        below
-      </p>
-      <el-button>el-button</el-button>
-    </div>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <el-table :data="tableData" style="width: 100%">
+      <el-table-column prop="workName" label="工号"></el-table-column>
+
+      <el-table-column
+        v-for="level1Filed of fileds"
+        :prop="level1Filed.code"
+        :key="level1Filed.name"
+        :label="level1Filed.name"
+      >
+        <el-table-column
+          v-for="level2Filed of level1Filed.fileds"
+          :key="level2Filed.code"
+          :label="level2Filed.name"
+          :prop="`data.${level1Filed.code}.${level2Filed.code}`"
+        >
+          <el-table-column
+            v-for="level3Filed of level2Filed.fileds"
+            :key="level3Filed.code"
+            :label="level3Filed.name"
+            :prop="
+              `data.${level1Filed.code}.${level2Filed.code}.${level3Filed.code}`
+            "
+          ></el-table-column>
+        </el-table-column>
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import data from "./data.json";
+import dataUtil from "./dataUtil.js";
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
+  mounted() {
+    let { fileds, datas } = dataUtil.getTableData(data);
+    this.fileds = fileds;
+    this.tableData = datas;
+  },
+  data() {
+    return {
+      fileds: [],
+      tableData: []
+    };
   }
-}
+};
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
