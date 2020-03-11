@@ -1,7 +1,8 @@
 <template>
   <div>
     <el-table :data="tableData" style="width: 100%">
-      <el-table-column prop="workName" label="工号"></el-table-column>
+      <el-table-column prop="workName" label="姓名"></el-table-column>
+      <el-table-column prop="workNo" label="工号"></el-table-column>
 
       <el-table-column
         v-for="level1Filed of fileds"

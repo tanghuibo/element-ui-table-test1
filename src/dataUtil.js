@@ -26,7 +26,6 @@ function putTableData(indexData, data, fileds) {
   indexData.forEach(item => {
     if(item.indexId != null) {
       data[item.indexId] = item.indexValue;
-      window.console.log(item.indexId, item.indexValue);
       getByCode(fileds, item.indexId, item.indexName);
     } else {
       putTableData(
@@ -44,12 +43,13 @@ export default {
     list.forEach(item => {
       let data = {
         workName: item.workName, 
+        workNo: item.workNo, 
         data: {}
       };
       datas.push(data);
       putTableData(item.markData, data.data, fileds);
     });
-
+    
     return {
       datas,
       fileds
