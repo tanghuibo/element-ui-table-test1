@@ -1,8 +1,8 @@
 # table-test
 
-## 试用地址
+## 演示地址
 
-[https://tanghuibo.github.io/echarts-study](https://tanghuibo.github.io/echarts-study)
+[https://tanghuibo.github.io/element-ui-table-test1](https://tanghuibo.github.io/element-ui-table-test1)
 
 ## 数据
 
