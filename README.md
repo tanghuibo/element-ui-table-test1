@@ -1,5 +1,9 @@
 # table-test
 
+## 试用地址
+
+[https://tanghuibo.github.io/echarts-study](https://tanghuibo.github.io/echarts-study)
+
 ## 数据
 
 ```json
